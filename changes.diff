@@ -1,0 +1,136 @@
+diff --git a/src/pages/about.astro b/src/pages/about.astro
+index 075915d..5ceeebc 100644
+--- a/src/pages/about.astro
++++ b/src/pages/about.astro
+@@ -11,8 +11,7 @@ import Layout from "../layouts/Layout.astro";
+ 
+   <h2>Contact</h2>
+   <ul>
+-    <li><a href="mailto:you@example.com">Email</a></li>
+-    <li><a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener">LinkedIn</a></li>
+-    <li><a href="https://github.com/your-username" target="_blank" rel="noopener">GitHub</a></li>
++    <li><a href="https://www.linkedin.com/in/ragavendranm" target="_blank" rel="noopener">LinkedIn</a></li>
++    <li><a href="https://github.com/ragavendranm" target="_blank" rel="noopener">GitHub</a></li>
+   </ul>
+ </Layout>
+diff --git a/src/pages/photography.astro b/src/pages/photography.astro
+index 3a4eb55..23142bd 100644
+--- a/src/pages/photography.astro
++++ b/src/pages/photography.astro
+@@ -1,37 +1,101 @@
+ ---
+ import Layout from "../layouts/Layout.astro";
+-// Drop image files into /public/photos/ and reference them below,
+-// or switch to Astro's <Image> component for automatic optimization:
+-// import { Image } from "astro:assets";
++import { Image } from "astro:assets";
++import photoCaptions from "../data/photoCaptions.js";
++
++// Drop image files directly into src/assets/photography/ — every one
++// found there is automatically picked up, optimized, and rendered below.
++// To add a caption/description, add a matching entry (by filename) in
++// src/data/photoCaptions.js.
++const photoModules = import.meta.glob("../assets/photography/*.{jpeg,jpg,png,webp}", {
++  eager: true,
++  import: "default",
++});
++
++const photos = Object.entries(photoModules).map(([path, image]) => {
++  const filename = path.split("/").pop();
++  const meta = photoCaptions[filename] || {};
++  return { image, filename, caption: meta.caption, description: meta.description };
++});
+ ---
+ 
+ <Layout title="Photography">
+   <h1>Photography</h1>
+   <p class="muted">A selection of personal work.</p>
+ 
++  {photos.length === 0 && (
++    <p class="muted">
++      No photos yet — add image files to <code>src/assets/photography/</code>.
++    </p>
++  )}
++
+   <div class="grid">
+-    <!-- Example placeholder tile — replace with real <img> or <Image> tags -->
+-    <div class="placeholder">Photo 1</div>
+-    <div class="placeholder">Photo 2</div>
+-    <div class="placeholder">Photo 3</div>
++    {photos.map((photo) => (
++      <figure>
++        <a href={photo.image.src} target="_blank" rel="noopener">
++          <Image src={photo.image} alt={photo.caption ?? ""} width={500} class="photo" />
++        </a>
++        {photo.caption && <figcaption class="caption">{photo.caption}</figcaption>}
++        {photo.description && (
++          <details>
++            <summary>Details</summary>
++            <p class="description">{photo.description}</p>
++          </details>
++        )}
++      </figure>
++    ))}
+   </div>
+ </Layout>
+ 
+ <style>
+   .grid {
+     display: grid;
+-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+-    gap: 1rem;
++    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
++    gap: 1.5rem;
+     margin-top: 1.5rem;
+   }
+ 
+-  .placeholder {
++  figure {
++    margin: 0;
++  }
++
++  .photo {
++    width: 100%;
+     aspect-ratio: 4 / 3;
+-    background: var(--color-surface);
+-    display: flex;
+-    align-items: center;
+-    justify-content: center;
+-    color: var(--color-muted);
++    object-fit: cover;
+     border-radius: 6px;
++    display: block;
++  }
++
++  .caption {
++    margin-top: 0.5rem;
++    font-size: 0.9rem;
++    font-weight: 600;
++  }
++
++  .description {
++    color: var(--color-muted);
++    font-size: 0.85rem;
++    margin-top: 0.4rem;
++  }
++
++  details summary {
++    cursor: pointer;
++    color: var(--color-accent);
++    font-size: 0.8rem;
++    margin-top: 0.3rem;
++    list-style: none;
++  }
++
++  details summary::-webkit-details-marker {
++    display: none;
++  }
++
++  details summary::before {
++    content: "+ ";
++  }
++
++  details[open] summary::before {
++    content: "− ";
+   }
+ </style>
