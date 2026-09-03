@@ -1,0 +1,57 @@
+---
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/experience", label: "Experience" },
+  { href: "/projects", label: "Projects" },
+  { href: "/blog", label: "Blog" },
+  { href: "/photography", label: "Photography" },
+  { href: "/about", label: "About" },
+];
+---
+
+<header>
+  <nav>
+    <a href="/" class="site-name">Ragavendran Madhusudanan</a>
+    <ul>
+      {navLinks.map((link) => (
+        <li><a href={link.href}>{link.label}</a></li>
+      ))}
+    </ul>
+  </nav>
+</header>
+
+<style>
+  header {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  nav {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .site-name {
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    gap: 1.25rem;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+  }
+
+  li a {
+    color: var(--color-text);
+    font-size: 0.95rem;
+  }
+</style>

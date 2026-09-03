@@ -1,0 +1,287 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const coreCompetencies = [
+  "Spatial Computer Vision",
+  "CV Model Fine-Tuning",
+  "Human-in-the-loop (HITL) Evaluation",
+  "Responsible AI & Privacy (PII Detection)",
+  "3D Reconstruction & 3D Gaussian Splatting (3DGS)",
+  "Generative AI (GenAI)",
+  "Platform & Product Strategy",
+  "API Design",
+  "Pricing & Monetization (TSM/WTP)",
+  "Cross Functional & Executive Leadership",
+];
+
+const companies = [
+  {
+    name: "Zillow Group",
+    location: "Seattle, WA, USA",
+    dates: "Mar 2019 - Present",
+    roles: [
+      {
+        title: "Principal Product Manager, Rich Media AI",
+        dates: "Jan 2022 - Present",
+        summary:
+          "Product Lead for Zillow's Immersive Media Capture & Management Ecosystem across iOS, Android, Web, and Cloud APIs. Direct product strategy for Zillow 3D Home and SkyTour, leveraging Spatial Computer Vision, Generative AI, and 3D reconstruction pipelines to <strong>scale media throughput 20x </strong>(from 3K to 60K+ tours/month). Eliminate physical capture friction and hardware barriers to drive creator adoption, while deploying responsible AI safeguards and enterprise photography features for high-volume media partners that unblocked strategic enterprise partnerships (50K+ annual tours) and reduced support overhead by 87.7%.",
+        bullets: [
+          "Spatial CV & User Adoption Friction Removal: Replaced physical floor plan markers (mousepad/setup shots) by championing a spatial computer vision (CV) heuristic based on architectural invariants (door, kitchen cabinet and countertop heights); deployed after 6 months of rigorous validation testing, this method saved $268K/yr ($100k operational cost + $168k manual annotation cost), cut floor plan processing queue times by 50% (7.0h → 3.7h), and eliminated setup-related tour rejections by 100%.",
+          "Enterprise PII Blurring: Spearheaded automated AI privacy blurring (faces, license plates, diplomas) across 360° panoramas by fine-tuning an open-source CV model on 1,000+ panoramas; enforced a >90% precision gate, 2-month shadow pipeline deployment, and manual AI override UX in the dashboard, unblocking a strategic enterprise syndication deal that safeguarded 50k+ tours annually (~15% of platform volume).",
+          "Image Quality & GenAI Pipeline: Led a multi-year image quality transformation, combining home-grown Auto White Balance (AWB) and HDR merge algorithms with cloud GenAI enhancement pipelines; fine-tuned candidate generative models strictly on Zillow-licensed media to enforce data ethics, and architected a 1-year Human-in-the-Loop (HITL) hallucination benchmarking framework with parallel shadow deployments to evaluate and de-risk model reliability prior to full rollout.",
+          "SkyTour Rollout: Orchestrated the nationwide rollout of \"SkyTour\" (exterior virtual tour product based on 3D Gaussian Splatting / 3DGS technology), while maintaining a 99% video upload success rate by building proactive monitoring tools, real-time alert thresholds, and rapid resolution SOPs.",
+          "Creator Hardware Strategy & Adoption: Recognized hardware cost as a primary bottleneck for photographer adoption; expanded capture accessibility by introducing SDK support for lower-cost, high-image-quality hardware (Insta360 X2, X3, X4, X5 and Ricoh Theta X), successfully lowering creator entry barriers and accelerating platform usage.",
+          "Multi-Pillar Platform Scaling: Scaled Zillow's 3D Home tour volume 20x (from 3,000 to 60,000+ tours/month) by driving improvements across 4 product pillars: Zillow 3D Home mobile apps, web dashboard, cloud media ingestion pipelines, and internal/external integrations.",
+          "Developer Productivity & Support Automation: Conceived and launched \"Sparkle,\" a self-serve operational support tool and internal administrative API, reducing engineering support requests by 87.7% and significantly increasing developer velocity.",
+          "Location/Address Support Reduction: Modernized tour management APIs and address-matching workflows, cutting location/address-related support tickets by 50% while improving listing sync reliability across photography and syndication partners.",
+          "Field Ethnography & Creator Workflow Research: Regularly shadowed professional photographers on live real estate shoots and conducted 18 deep-dive interviews across photography companies and agents; evaluated holistic capture stacks (listing photos, drone footage, marketing videos) to eliminate multi-app friction and tailor the Zillow 3D Home app for seamless multi-media workflows.",
+          "TSM & WTP Monetization Modeling: Modeled Total Serviceable Market (TSM) pricing elasticity across customer tiers and authored the executive SkyTour Distribution Strategy proposal; established a tiered product roadmap recommending the premium SkyTour product for high-WTP (Willingness to Pay) agents alongside a low-cost, lightweight tier (\"Squirrel Tours\") for price-sensitive mass-market agents.",
+          "Portfolio Scaling & Multi-Product Readied Platform: Spearheaded and evangelized the strategic evolution of Zillow's immersive media suite from a single product offering into a multi-product platform; established extensible UX patterns and system architectures that accelerated time-to-market for SkyTour, Instant Floor Plans, and Unconstrained Walkthroughs.",
+        ],
+      },
+      {
+        title: "Senior Product Manager, Zillow Offers Machine Learning",
+        dates: "Mar 2019 - Dec 2021",
+        summary:
+          "Product Lead for 'Live Offers' ML Initiative. Scaled a real-time home valuation engine from concept to nationwide deployment in 24 markets, supporting a revenue leap from $1.4B to $6B. Managed intelligent routing algorithms that balanced model accuracy, delivery speed, and adverse selection risk to automate high-confidence volume while maintaining strict valuation integrity.",
+        bullets: [
+          "Expanded \"Live Offers\" from a single market pilot to nationwide coverage in 9 months.",
+          "Achieved 70% automation of \"initial offers\" (eliminating need for 25+ FTE hiring) and a 20% reduction in \"adjusted offers\" variable costs through continuous refinement of risk-profile routing.",
+          "Accelerated \"Time to Initial Offer\" by 3.5x (from 7 days to 2 days) over 18 months through iterative experimentation and (Human-in-the-Loop) HITL process optimization.",
+          "Led the \"Live Offers\" offline experiment, yielding a 2x increase in home acquisitions - the most successful experiment in the program's history.",
+          "Evangelized product roadmap and secured buy-in for high-impact ML initiatives through monthly business reviews (MBRs), OKR planning, and executive proposals.",
+        ],
+      },
+    ],
+  },
+  {
+    name: "HomeAway / Vrbo",
+    location: "Austin, TX, USA (owned by Expedia)",
+    dates: "Mar 2017 - Mar 2019",
+    roles: [
+      {
+        title: "Senior Product Manager, Data",
+        dates: "Mar 2017 - Mar 2019",
+        bullets: [
+          "Spearheaded the development of HomeAway's cloud-native, real-time data streaming architecture, reducing 'time to insight' by over 90% (from 36 hours to under 3). This mission-critical infrastructure powered real-time user personalization, marketing spend optimization, and high-velocity A/B testing.",
+          "Orchestrated the end-to-end launch of an internal Data Catalog platform, following a rigorous 'build vs. buy' analysis and iterative discovery process. By prioritizing data democratization, the application empowered 50+ Data Scientists to self-serve, reclaiming 300+ productivity hours by eliminating manual data-discovery bottlenecks.",
+        ],
+      },
+    ],
+  },
+  {
+    name: "The Advisory Board Company",
+    location: "Austin, TX, USA (owned by Optum)",
+    dates: "Mar 2012 - Feb 2017",
+    roles: [
+      {
+        title: "Senior Product Manager / Product Manager",
+        dates: "Mar 2012 - Feb 2017",
+        summary:
+          "Product Lead - Healthcare Business Intelligence. Scaled a premier Healthcare BI platform to $65M ARR, achieving 6x revenue growth and a 5x increase in membership (from 50 to 330+ organizations) over 4 years. Launched five strategic modules utilized by strategic planners across 1,100+ US hospitals.",
+        bullets: [
+          "Orchestrated four critical product pivots in collaboration with R&D and UX, consistently increasing or sustaining revenue and membership.",
+          "Ad-Hoc Reporting: Developed a custom data model and streamlined ETL processes, leveraging continuous user feedback to maximize module utility.",
+          "Geo-Visualization: Directed the R&D of a thematic mapping tool for population and disease incidence, enabling hospital planners to identify high-growth revenue opportunities.",
+          "Market Trend Analytics: Spearheaded a trend analysis tool to optimize referral patterns and patient-sharing behavior between PCPs and specialists.",
+          "Predictive Forecasting: Delivered an advanced demand-forecasting and scenario-planning tool, equipping Sales with a competitive edge and empowering hospital executives with financial decision-making data.",
+          "Drove product discovery by synthesizing NPS metrics and qualitative interviews; partnered with UX on iterative design sprints and usability testing to optimize the end-to-end user journey.",
+          "Evangelized product roadmap through customer webinars and sales demo alignment, while providing leadership with data-driven updates on product performance and milestones.",
+          "Team Leadership & Scale: Doubled a global product team (from 2 to 4) and mentored four individuals to accelerate team maturity and organizational scale.",
+        ],
+      },
+      {
+        title: "Senior Business Intelligence Analyst",
+        bullets: [
+          "Developed and deployed a C#/ASP.NET self-service reporting tool that automated manual data requests, saving $75K in annual costs. The solution eliminated reporting bottlenecks for a 25-person team, reclaiming 900+ productivity hours previously lost to manual analysis.",
+          "Engineered an automated ETL pipeline using C# to ingest product usage telemetry, transforming raw logs into a comprehensive SSRS dashboard. This enabled the Product Management team to leverage real-time user behavior data, driving data-validated decisions for the feature roadmap.",
+        ],
+      },
+    ],
+  },
+  {
+    name: "Macquarie Energy LLC",
+    location: "Houston, TX, USA",
+    dates: "Feb 2010 - Feb 2012",
+    roles: [
+      {
+        title: "Software Engineer, Energy Market Data Team",
+        dates: "Feb 2010 - Feb 2012",
+        bullets: [
+          "Implemented Java-based ETL data feeds to fetch weather, energy market & invoice data from diverse data vendors & Independent System Operators (ISO) into internal IT systems to facilitate analytics, forecasting, invoice reconciliation & settlement.",
+          "Orchestrated the successful replacement of a high-cost vendor platform with a proprietary in-house ISO Portal, delivering $500K in annual cost savings. Navigated aggressive project milestones to ensure a seamless transition, earning the ITG Award for Outstanding Delivery (May 2011) for exceptional execution.",
+        ],
+      },
+    ],
+  },
+  {
+    name: "Wipro Technologies",
+    location: "Bangalore, India / Stockholm, Sweden",
+    dates: "Aug 2005 - Apr 2008",
+    roles: [
+      {
+        title: "Senior Developer / Maintenance Lead",
+        dates: "Aug 2005 - Apr 2008",
+        bullets: [
+          "Elevated Customer Satisfaction ratings from 5/7 to 6/7 by transforming Production Support operations. Optimized defect resolution workflows to address high-priority issues swiftly and established a seamless pipeline for change requests, ensuring rapid delivery in subsequent releases.",
+          "Engineered a robust PL/SQL integration layer for an enterprise inventory management system, enabling seamless data interoperability across disparate legacy platforms.",
+        ],
+      },
+    ],
+  },
+];
+
+const education = [
+  {
+    school: "Texas A&M University, Mays Business School",
+    location: "College Station, TX, USA",
+    degree: "Master of Science in Management of Information Systems, GPA 4.0",
+    dates: "Dec 2009",
+  },
+  {
+    school: "Anna University, Kumaraguru College of Technology",
+    location: "Coimbatore, Tamilnadu, India",
+    degree: "Bachelor of Engineering in Computer Science, GPA 4.0",
+    dates: "Jun 2005",
+  },
+];
+---
+
+<Layout title="Experience">
+  <h1>Experience</h1>
+
+  <section>
+    <p class="narrative">
+      {/* Replace with a 2-3 sentence summary of your career arc and what you're focused on now. */}
+      A short narrative summary goes here — your career arc in a few sentences,
+      and what you're focused on today.
+    </p>
+  </section>
+
+  <section>
+    <h2>Work History</h2>
+    {companies.map((company) => (
+      <div class="company">
+        <h3>{company.name}</h3>
+        <p class="muted">{company.location} · {company.dates}</p>
+
+        {company.roles.map((role) => (
+          <div class="role">
+            <h4>{role.title}{role.dates && <span class="muted"> — {role.dates}</span>}</h4>
+            {role.summary && <p class="summary" set:html={role.summary} />}
+            <details>
+              <summary>Show details</summary>
+              <ul>
+                {role.bullets.map((bullet) => (
+                  <li>{bullet}</li>
+                ))}
+              </ul>
+            </details>
+          </div>
+        ))}
+      </div>
+    ))}
+  </section>
+
+  <section>
+    <h2>Core Competencies</h2>
+    <ul class="pill-list">
+      {coreCompetencies.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    {education.map((edu) => (
+      <div class="edu">
+        <h3>{edu.school}</h3>
+        <p class="muted">{edu.location}</p>
+        <p>{edu.degree} · {edu.dates}</p>
+      </div>
+    ))}
+  </section>
+</Layout>
+
+<style>
+  section {
+    margin-top: 2.5rem;
+  }
+
+  .pill-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0;
+    margin-top: 1rem;
+  }
+
+  .pill-list li {
+    background: var(--color-surface);
+    border-radius: 999px;
+    padding: 0.35rem 0.85rem;
+    font-size: 0.85rem;
+  }
+
+  .company {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .company:first-of-type {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .role {
+    margin-top: 1.25rem;
+  }
+
+  .role h4 {
+    margin-bottom: 0.25rem;
+  }
+
+  .role ul {
+    padding-left: 1.25rem;
+    margin-top: 0.75rem;
+  }
+
+  .role li {
+    margin-bottom: 0.6rem;
+  }
+
+  .narrative {
+    font-size: 1.05rem;
+  }
+
+  .summary {
+    font-style: italic;
+  }
+
+  details summary {
+    cursor: pointer;
+    color: var(--color-accent);
+    font-size: 0.9rem;
+    margin-top: 0.4rem;
+    list-style: none;
+  }
+
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details summary::before {
+    content: "+ ";
+  }
+
+  details[open] summary::before {
+    content: "− ";
+  }
+
+  .edu {
+    margin-top: 1rem;
+  }
+</style>

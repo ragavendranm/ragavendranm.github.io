@@ -1,0 +1,28 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const projects = [
+  {
+    slug: "example-project",
+    title: "Example Project",
+    blurb: "One-line summary of the idea and what the prototype demonstrates.",
+  },
+];
+---
+
+<Layout title="Projects">
+  <h1>Projects</h1>
+  <p class="muted">
+    Original product ideas, clickable prototypes, and analysis — independent
+    work, not tied to any employer.
+  </p>
+
+  <ul>
+    {projects.map((project) => (
+      <li>
+        <a href={`/projects/${project.slug}`}>{project.title}</a>
+        <p class="muted">{project.blurb}</p>
+      </li>
+    ))}
+  </ul>
+</Layout>
