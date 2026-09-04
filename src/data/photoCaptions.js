@@ -74,9 +74,9 @@ const photoCaptions = {
     date: "2010-09-05"
   },
    "Droplet-Final-2.jpg":{
-    caption: "Droplet",
+    caption: "About to drop",
     description:
-      "",
+      "Shot just before the drop was about to, well, drop :-) My intention was to shoot the picture of a droplet when it is suspended in mid air, but I never managed it till the end :-( As a consolation,  the droplet did resemble an eye, so I did something right in this experiement :-)",
     date: "2008-08-16"
   },
    "EscapeRoute.jpg":{
@@ -100,7 +100,7 @@ const photoCaptions = {
    "Godzilla.jpg":{
     caption: "Godzilla",
     description:
-      "",
+      "One of my favorite photos of all time for a few reasons: First, this was aboard a cruise ship to Helsinki, and the time was nearly close to midnight! I had read in the texts about the 'Land of the Midnight Sun', but to actually experience it in the middle of the sea was a fantastic experience. Second, this was one of my first innovative shots in photography, even though it happened by a happy accident.  As we were witnessing the sun sink into the horizon, I noticed this ship moving in the opposite direction. The scene was so beautiful, and all I had to do was introduce my hand as the new element into the scene. Didn't notice this at first, but later on realized that my hand looks like a monster which has just swallowed a ship :-)",
     date: "2007-07-13"
   },
    "GothamExposed.jpg":{
@@ -184,7 +184,7 @@ const photoCaptions = {
   "Spidey!!!.jpg":{
     caption: "Spidey!!!",
     description:
-      "",
+      "Never seen a shy customer as Spidey over here. Had to toil hard to get a decent snap as Spidey flitted over from flower to leaf to leat to flower as I followed him with my camera. I should have clicked over 20 times over a 30 minute time span. I had to give up once Spidey had enough and dropped himself to the ground. Two photographs made the cut, and here's the winner for you :-)",
     date: "2008-07-18"
   },
   "SpringForward.jpg":{
