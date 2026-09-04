@@ -55,3 +55,22 @@ h1, h2, h3 {
 .muted {
   color: var(--color-muted);
 }
+
+/* Blog post images: never overflow the content column, scale down
+   responsively on narrow screens. Individual images can still override
+   this with their own inline `style="max-width: ...px"` if needed. */
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  display: block;
+  margin: 1.5rem 0;
+}
+
+.post-content figcaption {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  text-align: center;
+  margin-top: -1rem;
+  margin-bottom: 1.5rem;
+}

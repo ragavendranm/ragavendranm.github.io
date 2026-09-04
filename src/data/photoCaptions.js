@@ -13,6 +13,12 @@ const photoCaptions = {
       "",
     date: "yyyy-mm-dd"
   },
+  "Giant Toddler.jpg":{
+    caption: "Giant Toddler",
+    description:
+      "A night shot of the Rainier Square Tower in downtown Seattle.  With 58 floors, this under-construction building already towers over every other building in the vicinity.  In fact, I took this picture from the 39th floor of my office building, and I still need to crane my neck up a little bit to get the full view of this building!  Not surprising considering that this is the 2nd tallest building in Seattle (that distinction belongs to the 76-story Columbia Center).",
+    date: "2019-12-12"
+  },
   "327pm.jpg": {
     caption: "3:27 PM",
     description:
