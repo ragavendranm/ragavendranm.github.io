@@ -5,8 +5,8 @@ import photoCaptions from "../data/photoCaptions.js";
 
 // Drop image files directly into src/assets/photography/ — every one
 // found there is automatically picked up, optimized, and rendered below.
-// To add a caption/description, add a matching entry (by filename) in
-// src/data/photoCaptions.js.
+// To add a caption/description/date, add a matching entry (by filename)
+// in src/data/photoCaptions.js.
 const photoModules = import.meta.glob("../assets/photography/*.{jpeg,jpg,png,webp}", {
   eager: true,
   import: "default",
@@ -15,13 +15,28 @@ const photoModules = import.meta.glob("../assets/photography/*.{jpeg,jpg,png,web
 const photos = Object.entries(photoModules).map(([path, image]) => {
   const filename = path.split("/").pop();
   const meta = photoCaptions[filename] || {};
-  return { image, filename, caption: meta.caption, description: meta.description };
+  return {
+    image,
+    filename,
+    caption: meta.caption,
+    description: meta.description,
+    date: meta.date ? new Date(meta.date) : null,
+  };
+});
+
+// Newest first. Photos without a date (no entry in photoCaptions.js,
+// or no `date` field set) sort to the end, alphabetically by filename.
+photos.sort((a, b) => {
+  if (a.date && b.date) return b.date.valueOf() - a.date.valueOf();
+  if (a.date) return -1;
+  if (b.date) return 1;
+  return a.filename.localeCompare(b.filename);
 });
 ---
 
 <Layout title="Photography">
   <h1>Photography</h1>
-  <p class="muted">A selection of personal work.</p>
+  <p class="muted">A selection of my personal work.</p>
 
   {photos.length === 0 && (
     <p class="muted">
@@ -32,8 +47,8 @@ const photos = Object.entries(photoModules).map(([path, image]) => {
   <div class="grid">
     {photos.map((photo) => (
       <figure>
-        <a href={photo.image.src} target="_blank" rel="noopener">
-          <Image src={photo.image} alt={photo.caption ?? ""} width={500} class="photo" />
+        <a href={photo.image.src} target="_blank" rel="noopener" class="thumb">
+          <Image src={photo.image} alt={photo.caption ?? ""} width={800} />
         </a>
         {photo.caption && <figcaption class="caption">{photo.caption}</figcaption>}
         {photo.description && (
@@ -59,11 +74,20 @@ const photos = Object.entries(photoModules).map(([path, image]) => {
     margin: 0;
   }
 
-  .photo {
-    width: 100%;
+  /* The wrapper enforces the crop — not the <img> itself — so each
+     photo's real (portrait/landscape/whatever) dimensions can't
+     override the grid's consistent tile shape. */
+  .thumb {
+    display: block;
     aspect-ratio: 4 / 3;
-    object-fit: cover;
+    overflow: hidden;
     border-radius: 6px;
+  }
+
+  .thumb :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
   }
 
